@@ -1,9 +1,0 @@
-Metadata-Version: 2.1
-Name: travel_recommender
-Version: 1.0.0
-Author-email: anurag932516@gmail.com
-Requires-Dist: Flask
-Requires-Dist: pandas
-Requires-Dist: numpy
-Requires-Dist: scikit-learn
-Requires-Dist: fuzzywuzzy
