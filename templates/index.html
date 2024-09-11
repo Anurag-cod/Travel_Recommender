@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Recommender</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Travel Recommendation System</h1>
+        <form method="POST">
+            <label for="state">Select a State:</label>
+            <select name="state" id="state" required>
+                {% for state in states %}
+                    <option value="{{ state }}">{{ state }}</option>
+                {% endfor %}
+            </select>
+            
+            <label for="destination">Enter a Destination:</label>
+            <input type="text" id="destination" name="destination" required>
+            
+            <button type="submit">Get Recommendations</button>
+        </form>
+
+        {% if recommendations is not none %}
+            <h2>Top Attractions:</h2>
+            <table>
+                <tr>
+                    <th>Rank</th>
+                    <th>Name</th>
+                    <th>State</th>
+                    <th>City</th>
+                    <th>Type</th>
+                    <th>Google Review Rating</th>
+                </tr>
+                {% for i, attraction in recommendations.iterrows() %}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td>{{ attraction['Name'] }}</td>
+                    <td>{{ attraction['State'] }}</td>
+                    <td>{{ attraction['City'] }}</td>
+                    <td>{{ attraction['Type'] }}</td>
+                    <td>{{ attraction['Google review rating'] }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        {% endif %}
+    </div>
+</body>
+</html>

@@ -1,0 +1,43 @@
+# Configuration file for Travel Recommender App
+
+app:
+  name: "Travel Recommender"
+  version: "1.0.0"
+  debug: true
+  host: "127.0.0.1"
+  port: 5000
+
+logging:
+  level: "INFO"  # Options: DEBUG, INFO, WARNING, ERROR, CRITICAL
+  log_dir: "logs"
+  log_file_name: "app.log"
+  log_format: "%(asctime)s - %(levelname)s - %(message)s"
+  date_format: "%d-%m-%Y %H:%M:%S"
+
+data:
+  travel_data_file: "Top Indian Places to Visit.csv"
+  pca_data_file: "app/data/pca_features.csv"
+
+paths:
+  templates_dir: "templates"
+  static_dir: "static"
+
+recommender:
+  k_neighbors: 5
+  hybrid_recommendation_count: 20
+
+docker:
+  base_image: "python:3.8-slim"
+  working_dir: "/app"
+  expose_port: 5000
+
+environment:
+  flask_env: "development"
+  secret_key: "your_secret_key_here"
+  database_url: "sqlite:///db.sqlite3"
+
+# Dockerfile settings for app deployment
+dockerfile:
+  app_directory: "/app"
+  python_version: "3.8-slim"
+  port: 5000
